@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\vivia\source\repos\HelloWPFApp\HelloWPFApp\App.xaml
-11407045341
+3897571939
 
-9-942991143
+1381586347
 198-352714763
-MainWindow.xaml;
+AddBook.xaml;MainWindow.xaml;ViewBook.xaml;
 
-False
+True
 
