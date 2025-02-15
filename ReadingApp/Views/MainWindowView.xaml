@@ -1,0 +1,25 @@
+﻿<Window x:Class="ReadingApp.Views.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ReadingApp.Views"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <ListBox MinHeight="200" MinWidth="30">
+                <TextBlock Text="Recently Logged Books" FontFamily="Arial"/>
+                <TextBlock Text="Courier New" FontFamily="Courier New"/>
+                <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
+            </ListBox>
+            <TabControl>
+                <TabItem Header="Add Books">
+                    <local:AddBookView />
+                </TabItem>
+                <TabItem Header="View Books">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
+
+        </StackPanel>
+        
+    </Grid>
+</Window>
