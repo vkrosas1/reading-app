@@ -12,11 +12,12 @@
             </ListBox>
             <TabControl>
                 <TabItem Header="Add Books">
-                    <local:AddBookView />
+                    <local:AddBookView Loaded="AddBookView_Loaded" />
                 </TabItem>
-                <TabItem Header="View Books">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
+                <!-- <TabItem Header="View Books">
+    <local:ViewBookLibraryView Loaded="ViewBookView_Loaded" />
+</TabItem>-->
+                
             </TabControl>
 
         </StackPanel>

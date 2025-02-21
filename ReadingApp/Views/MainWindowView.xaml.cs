@@ -20,5 +20,10 @@ namespace ReadingApp.Views
         {
             InitializeComponent();
         }
+
+        private void AddBookView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace ReadingApp.Objects
 {
     public class Book : INotifyPropertyChanged
     {
-        private string _title;
+        private string? _title;
         private Status _status;
         private BookFormat _bookFormat;
         private Ownership _ownership;

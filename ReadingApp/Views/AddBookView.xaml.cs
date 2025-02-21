@@ -1,4 +1,5 @@
-﻿using ReadingApp.ViewModels;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ReadingApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Application = System.Windows.Application;
 
 namespace ReadingApp.Views
 {
@@ -23,7 +25,8 @@ namespace ReadingApp.Views
         public AddBookView()
         {
             InitializeComponent();
-            DataContext = new AddBookViewModel();
+            //DataContext = new AddBookViewModel(((App)Application.Current).Services.GetService<BookService>());
+
         }
     }
 }
