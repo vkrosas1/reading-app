@@ -5,7 +5,7 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="Enter your title:"/>
-            <TextBox x:Name="titleInput" Width="300" HorizontalAlignment="Left"/>
+            <TextBox x:Name="titleInput" Width="300" HorizontalAlignment="Left" Text="{Binding NewBook.Title, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="Select the book status:"/>
             <ComboBox x:Name="statusInput" ItemsSource="{Binding BookStatuses}" SelectedItem="{Binding NewBook.Status, Mode=TwoWay}" Width="300"/>
             <TextBlock Text="What is the book format:"/>

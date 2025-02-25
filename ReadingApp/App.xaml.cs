@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ReadingApp.ViewModels;
 using ReadingApp.Views;
+using System.Windows;
 
 
 namespace ReadingApp
@@ -8,25 +9,27 @@ namespace ReadingApp
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : System.Windows.Application
+    public partial class App : Application
     {
+        public static IServiceProvider Services { get; private set; }
+
         public App()
         {
             this.InitializeComponent();
-            /*Services = new ServiceCollection()
-                        .AddSingleton<BookService>()
-                        .AddSingleton<AddBookViewModel>()
-                        .AddSingleton<ViewBookViewModel>()
-                        .BuildServiceProvider();*/
+            ConfigureServices();
         }
 
-        // public IServiceProvider Services { get; }
-
-        /*protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+       private void ConfigureServices()
         {
-            var window = new MainWindowView();
-            window.Activate();
-        }*/
+            var services = new ServiceCollection();
+
+            // registering the view models 
+            services.AddSingleton<AddBookViewModel>();
+            services.AddSingleton<ViewBookViewModel>();
+
+            // build the DI container 
+            Services = services.BuildServiceProvider();
+        }
     }
 
 }

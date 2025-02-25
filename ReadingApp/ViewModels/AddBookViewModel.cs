@@ -17,14 +17,9 @@ namespace ReadingApp.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private Book _newBook;
-        private readonly BookService _bookService;
+        public ObservableCollection<Book> Books { get; set; } = new ObservableCollection<Book>();
 
-        public ObservableCollection<Book> Books => _bookService.Books;
-
-        public Book NewBook { get; set; } = new Book();
-
-
-/*        public Book NewBook
+        public Book NewBook
         {
             get => _newBook;
             set
@@ -32,17 +27,16 @@ namespace ReadingApp.ViewModels
                 _newBook = value;
                 OnPropertyChanged(nameof(NewBook));
             }
-        }*/
-
+        }
 
         public ICommand AddBookCommand { get; }
         public ObservableCollection<Status> BookStatuses { get; }
         public ObservableCollection<BookFormat> BookFormats { get; }
         public ObservableCollection<Ownership> BookOwnerships { get; }
 
-        public AddBookViewModel(BookService bookService)
+        public AddBookViewModel()
         {
-            _bookService = bookService;
+            // _bookService = bookService;
             BookStatuses = new ObservableCollection<Status>(
                 Enum.GetValues(typeof(Status)).Cast<Status>()
                 );
@@ -61,16 +55,16 @@ namespace ReadingApp.ViewModels
             // Add your logic to save the book
             if (validateBook(_newBook))
             {
-            Console.WriteLine($"Book Added: {NewBook.Title}");
+            Console.WriteLine($"Book Added: {_newBook.Title}");
                 Books.Add(new Book
                 {
-                    Title = NewBook.Title,
-                    Status = NewBook.Status,
-                    BookFormat = NewBook.BookFormat,
-                    Ownership = NewBook.Ownership,
+                    Title = _newBook.Title,
+                    Status = _newBook.Status,
+                    BookFormat = _newBook.BookFormat,
+                    Ownership = _newBook.Ownership,
                 });
             }
-            NewBook = new Book(); // Reset form after adding
+            _newBook = new Book(); // Reset form after adding
             OnPropertyChanged(nameof(NewBook));
 
         }
@@ -78,14 +72,7 @@ namespace ReadingApp.ViewModels
         private bool validateBook(Book book)
         {
             // check if the book hasn't been added yet
-            if (Books.Contains(book))
-            {
-                return false;
-            }
-            else
-            {
-                return book != null;
-            }
+            return book != null && !Books.Contains(book);
 
         }
 
