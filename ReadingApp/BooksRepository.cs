@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using ReadingApp.Constants;
 using ReadingApp.Objects;
 
-public class BookService
+public class BooksRepository
 {
     public ObservableCollection<Book> Books { get; set; } = new ObservableCollection<Book>();
 }

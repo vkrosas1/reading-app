@@ -23,6 +23,9 @@ namespace ReadingApp
         {
             var services = new ServiceCollection();
 
+            // registering the repository of books 
+            services.AddSingleton<BooksRepository>();
+
             // registering the view models 
             services.AddSingleton<AddBookViewModel>();
             services.AddSingleton<ViewBookViewModel>();

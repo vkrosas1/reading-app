@@ -14,10 +14,11 @@ namespace ReadingApp.ViewModels
 {
     public class AddBookViewModel : INotifyPropertyChanged
     {
+        private BooksRepository _booksRepository;
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private Book _newBook;
-        public ObservableCollection<Book> Books { get; set; } = new ObservableCollection<Book>();
 
         public Book NewBook
         {
@@ -34,9 +35,12 @@ namespace ReadingApp.ViewModels
         public ObservableCollection<BookFormat> BookFormats { get; }
         public ObservableCollection<Ownership> BookOwnerships { get; }
 
-        public AddBookViewModel()
+        public AddBookViewModel(BooksRepository booksRepository)
         {
-            // _bookService = bookService;
+            _booksRepository = booksRepository;
+
+            _newBook = new Book(); 
+
             BookStatuses = new ObservableCollection<Status>(
                 Enum.GetValues(typeof(Status)).Cast<Status>()
                 );
@@ -56,7 +60,7 @@ namespace ReadingApp.ViewModels
             if (validateBook(_newBook))
             {
             Console.WriteLine($"Book Added: {_newBook.Title}");
-                Books.Add(new Book
+                _booksRepository.Books.Add(new Book
                 {
                     Title = _newBook.Title,
                     Status = _newBook.Status,
@@ -72,7 +76,7 @@ namespace ReadingApp.ViewModels
         private bool validateBook(Book book)
         {
             // check if the book hasn't been added yet
-            return book != null && !Books.Contains(book);
+            return book != null && !_booksRepository.Books.Contains(book);
 
         }
 

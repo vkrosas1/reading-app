@@ -11,11 +11,11 @@ namespace ReadingApp.ViewModels
     public class ViewBookViewModel
     {
         private Book book;
-        private readonly BookService _bookService;
+        private readonly BooksRepository _bookService;
 
         public ObservableCollection<Book> Books => _bookService.Books;
 
-        public ViewBookViewModel(BookService bookService)
+        public ViewBookViewModel(BooksRepository bookService)
         {
             _bookService = bookService;
         }
